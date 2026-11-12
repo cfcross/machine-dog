@@ -2,7 +2,7 @@
 
 光明实验室《二维路面巡检学生任务书》学生 B 的工程记录。目标是在平地沿路线移动，到井盖检查点停下，由学生 C 拍照检查，并记录沿途异常。项目周期为 **2026-10-26—2027-01-17**，本仓库实际工作记录始于 **2026-11-12**，没有回填前两周实验。
 
-**当前完成参考源码梳理、原创离线接口和 29 项单元测试；单点导航尚未完成动态验证。** 没有实际轨迹、终点误差或导航成功率。范围限二维平地，不做楼梯、机械臂或行走策略训练。
+**截至 2026-11-13，B/C 离线接口联调通过，完整测试 66 项通过；单点导航尚未完成动态验证。** 没有实际轨迹、终点误差或导航成功率。范围限二维平地，不做楼梯、机械臂或行走策略训练。
 
 | 成员 | 职责 |
 | --- | --- |
@@ -10,9 +10,37 @@
 | **B（本仓库）** | **地图、定位、规划、避障、目标执行及状态反馈** |
 | C | 巡检任务、拍照检测、异常与报告 |
 
-协作约定：C 提交检查点 → B 导航 → A 的 adapter 执行并反馈位姿 → B 返回移动结果 → C 开始检查。目前尚未联通这条链。
+协作约定：C 提交检查点 → B 导航 → A 的 adapter 执行并反馈位姿 → B 返回移动结果 → C 开始检查。C→B→C 已用实际 PatrolRunner 和人工导航反馈离线验证；A 的动态链路尚未接通。
+
+## 11 月 13 日接口交接
+
+- [B/C 接口 v1](docs/interfaces/b-c-interface.md)：同步 navigate、四项业务 ID 与独立 goal_id、超时及取消边界。
+- [给 C 的九项回复](docs/handoffs/reply-to-c.md)与[待确认事项](docs/handoffs/questions-to-c.md)。
+- [A/B 仿真接口 v1](docs/interfaces/a-b-interface.md)与[A 的 P0/P1/P2 回复模板](docs/handoffs/questions-to-a.md)。
+- [实际测试报告](docs/handoffs/validation-2026-11-13.md)：原29项＋21项契约＋13项真实C流程＋3项合成字段，全部为 INTERFACE_ONLY。
+
+新增 `examples/c_patrol_adapter.py`、`c_patrol_demo.py` 和对应测试。C 的原始工程在仓库之外，B 没有复制其检测代码、图片或报告。真实 C 集成测试需要已审核的 C project 与已有 Pillow：
+
+```bash
+export C_PROJECT_ROOT=/path/to/C/project
+python3 -m unittest discover -s tests -v
+python3 -m examples.c_patrol_demo --samples
+python3 -m examples.c_patrol_demo --c-project "$C_PROJECT_ROOT" --output logs/new-bc-run --scenario success
+```
+
+替换 C 路径；未设置时 13 项 C 集成测试会跳过，不能算作全套通过。A/B 字段样例在 `examples/ab_simulation_contract.json`，全部为 SYNTHETIC_EXAMPLE。
+
+从已验证提交生成两份独立交接包（只含B原创文件，不覆盖旧ZIP）：
+
+```bash
+python3 tools/build_handoffs.py --output-dir /home/student2/exports --c-project "$C_PROJECT_ROOT"
+```
+
+构建器记录提交、日期、版本与包内测试结果，并解压复测。当前最重要的后续输入是 A 的隔离场景、位姿/控制和停止复位方法。
 
 ## 已完成与尚未完成
+
+下图和三个条目保留 **11 月 12 日的29项测试基线**；本轮新增结果以上面的交接报告为准。
 
 ![验证范围与真实结果](docs/figures/04-verification.svg)
 
@@ -34,8 +62,10 @@ docs/
   week01-02.md / week03-04.md   # 启动说明 v0、接口和历史验收
 examples/
   interface_demo.py / move_base_adapter.py
+  c_patrol_adapter.py / c_patrol_demo.py / ab_simulation_contract.json
 tests/
-  test_interface_demo.py / test_move_base_adapter.py
+  test_*.py                    # 原29项、B/C契约、真实C流程及A/B字段
+tools/build_handoffs.py         # 从Git提交打包并解压复测
 ```
 
 已验证环境：Ubuntu 22.04.5、Python 3.10.12、Git 2.34.1。原创代码仅用 Python 标准库，不需要安装 ROS 或使用 GPU。仓库根目录运行：

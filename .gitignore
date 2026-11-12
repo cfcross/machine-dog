@@ -48,6 +48,9 @@ compile_commands.json
 maps/
 datasets/
 recordings/
+*.zip
+/handoffs/
+/exports/
 
 # Credentials and machine-specific settings
 .env

@@ -1,0 +1,46 @@
+{
+  "ab_contract_version": 1,
+  "data_source": "SYNTHETIC_EXAMPLE",
+  "validation_scope": "INTERFACE_ONLY",
+  "transport": "UNCONFIRMED",
+  "navigation_request": {
+    "data_source": "SYNTHETIC_EXAMPLE",
+    "payload": {
+      "mission_id": "example-mission", "task_id": "example-plan",
+      "checkpoint_id": "example-point", "request_id": "example-request",
+      "kind": "navigate", "requested_at": "2026-11-13T00:00:00+08:00",
+      "frame_id": "interface_test_map", "map_version": "synthetic-no-map",
+      "scene_version": "synthetic-no-simulator", "goal": {"x": 0.5, "y": 0.25, "yaw": 0.0},
+      "timeout_seconds": 30.0
+    }
+  },
+  "terminal_feedback": {
+    "data_source": "SYNTHETIC_EXAMPLE",
+    "payload": {
+      "mission_id": "example-mission", "task_id": "example-plan",
+      "checkpoint_id": "example-point", "request_id": "example-request",
+      "goal_id": null, "goal_id_source": "UNASSIGNED", "mode": "interface_test",
+      "status": "timeout", "detail": "example_deadline_exceeded",
+      "pose_source": "UNKNOWN", "cancel_requested": true,
+      "cancel_acknowledged": false, "stop_confirmed": false
+    }
+  },
+  "pose_input": {
+    "data_source": "SYNTHETIC_EXAMPLE",
+    "frame_id": "interface_test_map", "child_frame_id": "synthetic_robot",
+    "x": 0.0, "y": 0.0, "yaw": 0.0, "position_unit": "m", "yaw_unit": "rad",
+    "pose_source": "GROUND_TRUTH", "timestamp": {"clock": "SIM_TIME", "seconds": 12.5},
+    "note": "Example of a source label only; no simulator pose was measured."
+  },
+  "velocity_and_odometry": {
+    "data_source": "SYNTHETIC_EXAMPLE",
+    "command_topic": null, "command_message_type": null,
+    "velocity_fields": {"linear_x_m_s": 0.0, "linear_y_m_s": 0.0, "angular_z_rad_s": 0.0},
+    "velocity_frame_id": "UNCONFIRMED", "command_rate_hz": null,
+    "limits": {"linear_m_s": null, "angular_rad_s": null},
+    "odom_topic": null, "odom_message_type": null,
+    "odom_header_frame_id": "UNCONFIRMED", "odom_child_frame_id": "UNCONFIRMED",
+    "odom_required_fields": ["pose", "twist", "timestamp", "frame_id", "child_frame_id"],
+    "watchdog_seconds": null, "stop_method": null, "reset_method": null
+  }
+}
