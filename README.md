@@ -16,10 +16,10 @@
 
 ## 当前进度
 
-- 已完成：指定参考分支的静态审计、导航启动说明 v0、位姿/控制接口清单、原创 Python 标准库接口示例和 13 项基础测试。
+- 已完成：指定参考分支的静态审计、导航启动说明 v0、位姿/控制接口清单、原创离线接口示例。本轮增加 move_base 消息边界适配及目标结果关联测试，共 27 项测试通过。
 - 部分完成：第 1–2 周交付。单点示例可重复运行，但只是人工测试数据的接口演示。
-- **单点导航尚未完成动态验证**：本机未发现 ROS、Gazebo、可运行样例场景或已验证的位姿/仿真控制接口。未进行真实机器狗测试。
-- 未实现路径搜索、避障或 ROS adapter；后续优先接入参考系统，不重写已有导航算法。
+- **单点导航尚未完成动态验证**：当前可见环境和 student2 工作目录未发现 ROS、仿真场景或已验证的位姿/控制接口；实验室其他工作空间仍需 A 提供。未进行真实机器狗测试。
+- 新适配模块只转换目标消息和处理匹配 goal_id 的结果，不创建 ROS 节点、不发目标/取消/速度命令；路径搜索、避障与真实 ROS 通信仍待接入。
 
 ## 目录与环境
 
@@ -31,11 +31,14 @@ README.md
 .gitignore
 docs/reference-audit.md       # 指定版本、算法链路、证据与风险
 docs/week01-02.md             # 启动说明 v0、接口约定与真实测试记录
+docs/week03-04.md             # 本轮环境定位、接口复测与动态测试阻塞条件
 examples/interface_demo.py   # 原创离线接口演示，无运动控制
-tests/test_interface_demo.py # 人工数据驱动的接口测试
+examples/move_base_adapter.py # move_base 消息转换与结果关联，无通信
+tests/test_interface_demo.py  # 原有 13 项接口测试
+tests/test_move_base_adapter.py # 新增 14 项消息/状态测试
 ```
 
-本次实测环境：Ubuntu 22.04.5 LTS、Python 3.10.12、Git 2.34.1。离线示例只依赖 Python 标准库，无需安装依赖，不使用 GPU。用户提供的 GPU/驱动信息未在本轮复测；此前沙盒内 `nvidia-smi` 失败不能说明 GPU 损坏。
+实测环境：Ubuntu 22.04.5 LTS、Python 3.10.12、Git 2.34.1。离线模块只依赖 Python 标准库，无需安装依赖，不使用 GPU。2026-11-12 第二轮检查中 `nvidia-smi` 正常识别 RTX 4090、驱动 580.178.04，查询未发现 GPU 计算任务；之前执行环境的失败不代表硬件损坏。环境证据及范围见 [第 3–4 周记录](docs/week03-04.md)。
 
 ## 已验证的启动与测试命令
 
@@ -46,10 +49,11 @@ python3 examples/interface_demo.py --scenario reached
 python3 examples/interface_demo.py --scenario failed
 python3 examples/interface_demo.py --scenario timeout
 python3 -m py_compile examples/interface_demo.py tests/test_interface_demo.py
+python3 -m compileall -q examples tests
 python3 -m unittest discover -s tests -v
 ```
 
-2026-11-12：以上命令实际执行通过，13 项测试通过。三个场景分别输出 `RUNNING → REACHED / FAILED / TIMEOUT`，每次都带 `mode=interface-demo`、`validation_scope=INTERFACE_ONLY` 和 `pose_data=SYNTHETIC_FIXTURE`。`REACHED` 仅说明输入测试位姿满足位置和朝向容差，**不是仿真或真机到点成功**；位姿来源为 `UNKNOWN`。
+2026-11-12：原有五条命令在基线阶段实际通过；第二轮回归及新增检查共通过 27 项测试，compileall 通过。原三个场景分别输出 `RUNNING → REACHED / FAILED / TIMEOUT`，每次都带 `mode=interface-demo`、`validation_scope=INTERFACE_ONLY` 和 `pose_data=SYNTHETIC_FIXTURE`。`REACHED` 仅说明输入测试位姿满足位置和朝向容差，**不是仿真或真机到点成功**；位姿来源为 `UNKNOWN`。
 
 示例没有 ROS、网络、速度发布或 sleep 到点逻辑。配置、判据和失败原因见 [第 1–2 周记录](docs/week01-02.md)。ROS 启动命令仅作为待验证的源码入口列在该文档中，不能直接当作本站安装或运行说明。
 
