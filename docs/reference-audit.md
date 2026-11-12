@@ -1,5 +1,7 @@
 # 参考代码审计
 
+> 本文保留首轮审计范围与证据。本轮补读的主流程和算法见[智身巡检](references/01-elevator-robot.md)、[FAST-LIO 导航](references/02-fastlio-navigation.md)、[TARE](references/03-cmu-tare.md)；其中 TARE 的阅读范围已扩展。当前测试与工程状态见[阶段总结](project-progress.md)。
+
 实际日期：2026-11-12，Asia/Shanghai。方法：公开 API 目录树、指定提交的小型原始文件、只读 Git refs；未运行第三方节点、编译 ROS 或连接机器人。未下载地图、模型、SDK 二进制或递归子模块。
 
 **Confirmed** 表示有静态源码/配置证据；**Inferred** 表示由调用关系或官方默认行为推断；**Unknown** 表示尚未确认。三者均不代表运行成功。下表导航链路的动态验证全部为 **NOT_RUN**，本机缺少环境为 **BLOCKED**。

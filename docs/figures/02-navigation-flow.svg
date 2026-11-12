@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="990" viewBox="0 0 1400 990" role="img" aria-labelledby="title desc">
+<title id="title">02  参考导航链路：从传感器到执行结果</title><desc id="desc">依据 zs-ibot 指定提交的 launch / 配置 / 源码；不是已运行的仿真或实机系统。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#51667a" stroke-width="1.5"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="48" y="59" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="32" font-weight="700" fill="#18334b">02  参考导航链路：从传感器到执行结果</text>
+<text x="48" y="101" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#51667a">依据 zs-ibot 指定提交的 launch / 配置 / 源码；不是已运行的仿真或实机系统。</text>
+<rect x="48" y="150" width="390" height="180" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,151 H422" stroke="#2776a8" stroke-width="4"/>
+<text x="70" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">① 传感器与预处理</text>
+<text x="70" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">LiDAR 点云 + IMU</text>
+<text x="70" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">筛点、降采样、运动补偿</text>
+<text x="70" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">/livox/lidar · /livox/imu</text>
+<rect x="505" y="150" width="390" height="180" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M521,151 H879" stroke="#2776a8" stroke-width="4"/>
+<text x="527" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">② 建图 / 已有地图定位</text>
+<text x="527" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">FAST-LIO：惯性预测 + 匹配</text>
+<text x="527" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">NDT：定位初始化 / 重置</text>
+<text x="527" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">laserMapping.cpp</text>
+<rect x="962" y="150" width="390" height="180" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M978,151 H1336" stroke="#2776a8" stroke-width="4"/>
+<text x="984" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">③ 地图与位姿</text>
+<text x="984" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">PCD；二维 YAML + PGM</text>
+<text x="984" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">/Odometry；/prior_map</text>
+<text x="984" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">TF：camera_init → body</text>
+<polyline points="438,240 505,240" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="895,240 962,240" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="1157,330 1157,410" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<rect x="962" y="410" width="390" height="180" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M978,411 H1336" stroke="#986009" stroke-width="4"/>
+<text x="984" y="449" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#986009">④ 全局路径 · move_base</text>
+<text x="984" y="488" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">目标 + 地图 + TF → 路径</text>
+<text x="984" y="520" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">Navfn / Dijkstra：默认推断</text>
+<text x="984" y="552" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">实际全局插件仍 Unknown</text>
+<rect x="505" y="410" width="390" height="180" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M521,411 H879" stroke="#2776a8" stroke-width="4"/>
+<text x="527" y="449" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">⑤ 局部规划 · TEB</text>
+<text x="527" y="488" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">路径 + /scan + /odom</text>
+<text x="527" y="520" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">局部避障与速度约束</text>
+<text x="527" y="552" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">→ /cmd_vel（Twist）</text>
+<rect x="48" y="410" width="390" height="180" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,411 H422" stroke="#2776a8" stroke-width="4"/>
+<text x="70" y="449" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">⑥ 机器人桥接</text>
+<text x="70" y="488" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">ros_to_ibot.py → TCP move</text>
+<text x="70" y="520" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">此版本未发布 /odom</text>
+<text x="70" y="552" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">停车与失联保护待验证</text>
+<polyline points="962,500 895,500" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="505,500 438,500" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<text x="640" y="383" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="400" fill="#51667a">MoveBaseAction 目标</text>
+<polyline points="875,375 1000,375 1000,410" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="1352,530 1380,530 1380,680 700,680 700,710" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<rect x="48" y="710" width="1304" height="150" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,711 H1336" stroke="#2776a8" stroke-width="4"/>
+<text x="70" y="749" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">执行反馈：move_base Action → 上层任务（待接入）</text>
+<text x="70" y="788" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">仅当前 goal_id 的 SUCCEEDED 可报告 REACHED；旧结果、发送成功都不能算到达。</text>
+<text x="70" y="820" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">Action 结果不能单独证明物理停车；真实轨迹、终点位姿和停止还需仿真验证。</text>
+<text x="48" y="907" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#986009">GlobalPlanner 参数存在 ≠ 插件被选择；TEB 在配置中显式选择，但尚未动态验证。</text>
+<text x="48" y="963" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#51667a">依据：02-fastlio-navigation.md；桥接与反馈是控制链及逻辑返回关系，图中不表示桥接产生 Action 结果。</text>
+</svg>

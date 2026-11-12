@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="890" viewBox="0 0 1400 890" role="img" aria-labelledby="title desc">
+<title id="title">04  当前验证结果：测到了哪一层</title><desc id="desc">2026-11-12 实际执行记录；PASS、BLOCKED、NOT_RUN 分开表示，不计算导航成功率。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#51667a" stroke-width="1.5"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="48" y="59" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="32" font-weight="700" fill="#18334b">04  当前验证结果：测到了哪一层</text>
+<text x="48" y="101" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#51667a">2026-11-12 实际执行记录；PASS、BLOCKED、NOT_RUN 分开表示，不计算导航成功率。</text>
+<rect x="48" y="150" width="630" height="210" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,151 H662" stroke="#21785b" stroke-width="4"/>
+<text x="70" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#21785b">29 项离线单元测试 · PASS</text>
+<text x="70" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">15 项数据 / 位姿 / 状态测试</text>
+<text x="70" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">14 项 move_base 消息与结果测试</text>
+<text x="70" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">范围：INTERFACE_ONLY，使用人工夹具</text>
+<rect x="720" y="150" width="632" height="210" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M736,151 H1336" stroke="#21785b" stroke-width="4"/>
+<text x="742" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#21785b">Python 语法检查 · PASS</text>
+<text x="742" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">python3 -m compileall -q examples tests</text>
+<text x="742" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">两个边界用例修复前均报错</text>
+<text x="742" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">修复后包含在 29 项通过结果中</text>
+<rect x="48" y="410" width="1304" height="72" rx="8" fill="#fff4df"/>
+<text x="69" y="454" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="700" fill="#18334b">ROS 通信 / Action 握手</text>
+<text x="440" y="454" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="700" fill="#986009">BLOCKED</text>
+<text x="640" y="454" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">没有可用 ROS 端点；真实消息与节点未验证</text>
+<rect x="48" y="498" width="1304" height="72" rx="8" fill="#fff4df"/>
+<text x="69" y="542" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="700" fill="#18334b">仿真单点到达</text>
+<text x="440" y="542" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="700" fill="#986009">BLOCKED</text>
+<text x="640" y="542" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">缺场景、adapter、位姿与停止 / 复位条件</text>
+<rect x="48" y="586" width="1304" height="72" rx="8" fill="#edf1f5"/>
+<text x="69" y="630" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="700" fill="#18334b">仿真多点 / 避障</text>
+<text x="440" y="630" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="700" fill="#51667a">NOT_RUN</text>
+<text x="640" y="630" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">单点验收尚未完成，没有运行运动测试</text>
+<rect x="48" y="674" width="1304" height="72" rx="8" fill="#edf1f5"/>
+<text x="69" y="718" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="700" fill="#18334b">真实机器狗</text>
+<text x="440" y="718" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="700" fill="#51667a">NOT_RUN</text>
+<text x="640" y="718" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">本轮不执行真实机器狗控制</text>
+<text x="48" y="816" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="700" fill="#18334b">未产生实际轨迹、终点误差或机器人导航成功率。离线 REACHED 不能代替动态到点。</text>
+<text x="48" y="863" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#51667a">依据：本轮 unittest / compileall 实际输出；本地原始日志 logs/2026-11-12-stage/（不随归档发布）。</text>
+</svg>

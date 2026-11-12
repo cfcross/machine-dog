@@ -31,6 +31,12 @@ class InterfaceTests(unittest.TestCase):
             with self.subTest(fields=fields), self.assertRaises(ValueError):
                 InterfaceDemo(self.request, **fields)
 
+    def test_unrepresentable_integer_is_a_validation_error(self):
+        with self.assertRaises(ValueError):
+            MoveRequest("large", "demo_map", 10 ** 1000, 0, 0)
+        with self.assertRaises(ValueError):
+            self.pose(sample_time_s=10 ** 1000)
+
     def test_pose_validation(self):
         for fields in [dict(x=math.nan), dict(sample_time_s=math.inf),
                        dict(pose_source="invalid"), dict(frame_id="")]:
@@ -51,6 +57,11 @@ class InterfaceTests(unittest.TestCase):
     def test_angle_wraparound(self):
         demo = InterfaceDemo(MoveRequest("angle", "demo_map", 1, 2, math.pi - 0.02))
         self.assertEqual(demo.step(now_s=1, pose=self.pose(yaw=-math.pi + 0.02)).status, Status.REACHED)
+
+    def test_finite_extreme_angles_do_not_overflow_on_subtraction(self):
+        demo = InterfaceDemo(MoveRequest("large-angle", "demo_map", 1, 2, -1e308))
+        feedback = demo.step(now_s=1, pose=self.pose(yaw=1e308))
+        self.assertEqual(feedback.status, Status.RUNNING)
 
     def test_frame_mismatch(self):
         result = self.demo.step(now_s=1, pose=self.pose(frame_id="odom"))

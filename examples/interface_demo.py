@@ -27,7 +27,13 @@ def _text(name, value):
 
 
 def _finite(name, value):
-    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError(f"{name} must be a finite number")
+    try:
+        finite = math.isfinite(value)
+    except OverflowError:
+        finite = False  # Python integers may exceed the ROS floating-point range.
+    if not finite:
         raise ValueError(f"{name} must be a finite number")
 
 
@@ -129,8 +135,10 @@ class InterfaceDemo:
             else:
                 distance = math.hypot(pose.x - self.request.target_x,
                                       pose.y - self.request.target_y)
-                yaw_error = abs(math.atan2(math.sin(pose.yaw - self.request.target_yaw),
-                                           math.cos(pose.yaw - self.request.target_yaw)))
+                # Reduce each angle before subtraction to avoid finite-float overflow.
+                yaw_delta = (math.remainder(pose.yaw, math.tau)
+                             - math.remainder(self.request.target_yaw, math.tau))
+                yaw_error = abs(math.atan2(math.sin(yaw_delta), math.cos(yaw_delta)))
                 reached = distance <= self.position_tolerance and yaw_error <= self.yaw_tolerance
                 self.feedback = self._feedback(Status.REACHED if reached else Status.RUNNING,
                                                source=source)

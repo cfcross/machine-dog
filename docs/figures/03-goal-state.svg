@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1100" viewBox="0 0 1400 1100" role="img" aria-labelledby="title desc">
+<title id="title">03  goal_id 如何保护当前任务</title><desc id="desc">MoveBaseResultAdapter 的实际离线行为；不发送目标、取消或速度命令。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#51667a" stroke-width="1.5"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="48" y="59" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="32" font-weight="700" fill="#18334b">03  goal_id 如何保护当前任务</text>
+<text x="48" y="101" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#51667a">MoveBaseResultAdapter 的实际离线行为；不发送目标、取消或速度命令。</text>
+<rect x="48" y="150" width="570" height="180" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,151 H602" stroke="#2776a8" stroke-width="4"/>
+<text x="70" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">建立本次执行</text>
+<text x="70" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">task_id：业务任务；goal_id：本次尝试</text>
+<text x="70" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">有效目标 + frame 校验 → RUNNING</text>
+<text x="70" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">重试创建新实例，使用新的实际 goal_id</text>
+<rect x="720" y="150" width="632" height="180" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M736,151 H1336" stroke="#2776a8" stroke-width="4"/>
+<text x="742" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">收到 result：先检查时钟与期限</text>
+<text x="742" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">不同 goal_id → 忽略结果，不宣告成功</text>
+<text x="742" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">时钟仍推进：即使旧结果到来，也可能超时</text>
+<text x="742" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">匹配 goal_id → 按终态规则处理</text>
+<polyline points="618,240 720,240" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<rect x="48" y="405" width="390" height="185" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,406 H422" stroke="#21785b" stroke-width="4"/>
+<text x="70" y="444" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#21785b">REACHED</text>
+<text x="70" y="483" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">当前目标 SUCCEEDED（3）</text>
+<text x="70" y="515" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">到达期限前，且仍 RUNNING</text>
+<text x="70" y="547" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">仅代表匹配的 Action 成功</text>
+<rect x="505" y="405" width="390" height="185" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M521,406 H879" stroke="#986009" stroke-width="4"/>
+<text x="527" y="444" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#986009">FAILED</text>
+<text x="527" y="483" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">2 / 4 / 5 / 8 或 LOST（9）</text>
+<text x="527" y="515" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">主动取消：cancelled_by_client</text>
+<text x="527" y="547" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">LOST 不算服务器结束确认</text>
+<rect x="962" y="405" width="390" height="185" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M978,406 H1336" stroke="#986009" stroke-width="4"/>
+<text x="984" y="444" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#986009">TIMEOUT</text>
+<text x="984" y="483" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">poll 检查单调时钟</text>
+<text x="984" y="515" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">now − start ≥ timeout</text>
+<text x="984" y="547" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">成功结果迟到也不改回成功</text>
+<polyline points="1036,330 1036,365 243,365 243,405" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="700,365 700,405" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="1036,365 1157,365 1157,405" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<rect x="48" y="665" width="610" height="220" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,666 H642" stroke="#2776a8" stroke-width="4"/>
+<text x="70" y="704" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">取消请求 ≠ 取消确认</text>
+<text x="70" y="743" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">主动取消 / 超时 / LOST 可产生取消意图</text>
+<text x="70" y="775" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">pending_cancel_goal_id 仅返回精确 ID</text>
+<text x="70" y="807" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">传输层尚未实现，因此没有实际取消发送</text>
+<text x="70" y="839" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">取消请求之后，匹配的 2 / 8 才记录确认</text>
+<rect x="720" y="665" width="632" height="220" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M736,666 H1336" stroke="#2776a8" stroke-width="4"/>
+<text x="742" y="704" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">终态保持，确认信息可补充</text>
+<text x="742" y="743" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">REACHED / FAILED / TIMEOUT 不相互覆盖</text>
+<text x="742" y="775" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">迟到匹配结果可补充 action_terminal_received</text>
+<text x="742" y="807" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">cancel_acknowledged 单独记录；LOST 不确认</text>
+<text x="742" y="839" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">已收到结束结果后，不再被重复结果覆盖</text>
+<polyline points="700,590 700,628 353,628 353,665" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="1157,590 1157,628 1036,628 1036,665" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<text x="48" y="951" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#986009">取消已确认 / Action 已结束，都不是机器人已停车的物理证据。</text>
+<text x="48" y="999" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#51667a">当前目标的结果需通过终态类型校验；时钟不允许倒退。调用者须按时间顺序串行送入事件。</text>
+<text x="48" y="1073" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#51667a">依据：examples/move_base_adapter.py 与 tests/test_move_base_adapter.py；全部为 INTERFACE_ONLY。</text>
+</svg>

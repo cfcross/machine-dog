@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920" role="img" aria-labelledby="title desc">
+<title id="title">01  参考仓库与我们的工作</title><desc id="desc">箭头表示参考用途或约定的数据流；三个参考仓库均未集成到当前工程。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#51667a" stroke-width="1.5"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="48" y="59" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="32" font-weight="700" fill="#18334b">01  参考仓库与我们的工作</text>
+<text x="48" y="101" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#51667a">箭头表示参考用途或约定的数据流；三个参考仓库均未集成到当前工程。</text>
+<rect x="48" y="150" width="410" height="190" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,151 H442" stroke="#2776a8" stroke-width="4"/>
+<text x="70" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">智身巡检 · zsibot</text>
+<text x="70" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">任务队列、命名目标与结果</text>
+<text x="70" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">机器人控制桥接</text>
+<text x="70" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">参考资料 / 未运行</text>
+<rect x="495" y="150" width="410" height="190" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M511,151 H889" stroke="#2776a8" stroke-width="4"/>
+<text x="517" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">FAST-LIO 导航 · zs-ibot</text>
+<text x="517" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">地图、定位、move_base 与 TEB</text>
+<text x="517" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">传感器到速度的参考链路</text>
+<text x="517" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">参考资料 / 未运行</text>
+<rect x="942" y="150" width="410" height="190" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M958,151 H1336" stroke="#986009" stroke-width="4"/>
+<text x="964" y="189" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#986009">TARE · stable_on_go2</text>
+<text x="964" y="228" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">边观察边选择探索目标</text>
+<text x="964" y="260" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">分层覆盖规划与局部跟随</text>
+<text x="964" y="292" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">未来扩展 / 本轮不集成</text>
+<polyline points="253,340 253,393 1090,393 1090,450" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="7" marker-end="url(#arrow)"/>
+<text x="62" y="384" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="19" font-weight="400" fill="#51667a">任务组织 → C/B 接口</text>
+<polyline points="700,340 700,450" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="7" marker-end="url(#arrow)"/>
+<polyline points="1147,340 1147,365 1380,365 1380,710 930,710 930,630 895,630" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="7" marker-end="url(#arrow)"/>
+<rect x="48" y="450" width="390" height="220" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,451 H422" stroke="#2776a8" stroke-width="4"/>
+<text x="70" y="489" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">学生 A：仿真与 adapter</text>
+<text x="70" y="528" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">提供场景、时间、传感器</text>
+<text x="70" y="560" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">位姿标记：真值 / 估计</text>
+<text x="70" y="592" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">确认控制隔离、停止与复位</text>
+<text x="70" y="624" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">当前：场景与接口待提供</text>
+<rect x="505" y="450" width="390" height="220" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M521,451 H879" stroke="#21785b" stroke-width="4"/>
+<text x="527" y="489" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#21785b">学生 B：导航与反馈</text>
+<text x="527" y="528" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">地图、定位、路径与避障</text>
+<text x="527" y="560" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">task_id 绑定本次 goal_id</text>
+<text x="527" y="592" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">返回到达、失败或超时</text>
+<text x="527" y="624" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">当前：原创离线接口已测试</text>
+<rect x="962" y="450" width="390" height="220" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M978,451 H1336" stroke="#2776a8" stroke-width="4"/>
+<text x="984" y="489" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#2776a8">学生 C：巡检任务</text>
+<text x="984" y="528" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">提交检查点与任务编号</text>
+<text x="984" y="560" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">收到有效到达结果后拍照</text>
+<text x="984" y="592" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">保存异常及报告</text>
+<text x="984" y="624" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">当前：协作接口待联调</text>
+<polyline points="438,550 505,550" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="505,608 438,608" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="962,550 895,550" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<polyline points="895,608 962,608" fill="none" stroke="#51667a" stroke-width="2.2" stroke-dasharray="0" marker-end="url(#arrow)"/>
+<text x="64" y="711" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#51667a">A ↔ B：位姿、传感器与控制；C ↔ B：目标请求与执行结果。</text>
+<rect x="48" y="755" width="1304" height="100" rx="12" fill="white" stroke="#cfdae4" stroke-width="2"/><path d="M64,756 H1336" stroke="#21785b" stroke-width="4"/>
+<text x="70" y="794" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#21785b">当前已实现：原创消息与状态逻辑的离线验证</text>
+<text x="70" y="833" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="400" fill="#18334b">尚未接 ROS、规划器或仿真机器人；这些参考能力不等于本项目已具备。</text>
+<text x="48" y="893" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#51667a">依据：docs/references/ 三份源码总结；原创模块位于 examples/。2026-11-12</text>
+</svg>
